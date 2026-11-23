@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Carchi Lácteo · Directorio de empresas lácteas del Carchi</title>
+<meta name="description" content="Directorio de plantas, queserías, centros de acopio y asociaciones lácteas de la provincia del Carchi, Ecuador. Registre su empresa gratis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="aviso-ejemplo">
+  <div class="contenedor"></div>
+</div>
+
+<header class="barra">
+  <div class="contenedor">
+    <a class="logo" href="#inicio" aria-label="Carchi Lácteo, ir al inicio">
+      <svg viewBox="0 0 34 40" aria-hidden="true">
+        <path d="M17 1C17 1 3 17 3 26a14 14 0 0 0 28 0C31 17 17 1 17 1Z" fill="var(--verde-paramo)"/>
+        <path d="M17 36V20" stroke="var(--blanco-leche)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M17 22c-4-1-7-4-7-7 3 0 6 2 7 6M17 22c4-1 7-4 7-7-3 0-6 2-7 6M17 19c-2-2-2-5 0-8 2 3 2 6 0 8" fill="var(--blanco-leche)"/>
+      </svg>
+      <span><span class="l1">Carchi</span><span class="l2">Lácteo</span></span>
+    </a>
+    <button class="boton-menu" id="boton-menu" aria-expanded="false" aria-controls="menu">Menú</button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#directorio">Directorio</a>
+      <a href="#registro">Registrar empresa</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ===================== INICIO ===================== -->
+  <section data-vista="inicio">
+    <div class="portada">
+      <div class="contenedor">
+        <div>
+          <h1>Del páramo a tu mesa</h1>
+          <p class="bajada">El directorio de las empresas lácteas del Carchi. Encuentre proveedores de leche, queso y yogur, o registre su empresa gratis.</p>
+          <div class="acciones">
+            <a class="boton" href="#directorio">Buscar proveedores</a>
+            <a class="boton secundario" href="#registro">Registrar mi empresa</a>
+          </div>
+          <div class="cifras">
+            <div class="cifra"><strong id="cifra-empresas">0</strong><span>empresas registradas</span></div>
+            <div class="cifra"><strong id="cifra-cantones">0</strong><span>cantones con empresas</span></div>
+            <div class="cifra"><strong id="cifra-verificadas">0</strong><span>empresas verificadas</span></div>
+          </div>
+        </div>
+        <svg class="ilustracion" viewBox="0 0 400 300" aria-hidden="true">
+          <path d="M0 230 L70 150 L120 190 L190 100 L260 170 L320 120 L400 200 L400 300 L0 300Z" fill="var(--verde-paramo)" opacity=".2"/>
+          <path d="M0 260 L90 200 L170 240 L250 190 L330 230 L400 210 L400 300 L0 300Z" fill="var(--verde-paramo)" opacity=".45"/>
+          <path d="M200 40C200 40 140 110 140 150a60 60 0 0 0 120 0C260 110 200 40 200 40Z" fill="var(--superficie)" stroke="var(--azul-cielo)" stroke-width="4"/>
+          <path d="M200 190V120" stroke="var(--verde-paramo)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M200 128c-16-4-28-16-28-30 13 0 25 8 28 25M200 128c16-4 28-16 28-30-13 0-25 8-28 25M200 116c-8-9-8-22 0-34 8 12 8 25 0 34" fill="var(--verde-paramo)"/>
+          <circle cx="330" cy="60" r="22" fill="var(--amarillo-queso)"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="seccion">
+      <div class="contenedor">
+        <h2>Cómo funciona</h2>
+        <ol class="pasos">
+          <li><h3>Registre su empresa</h3><p>Llene el formulario en 3 pasos desde su celular. Solo necesita su RUC.</p></li>
+          <li><h3>La revisamos</h3><p>El equipo de Carchi Lácteo verifica los datos y aprueba la ficha.</p></li>
+          <li><h3>Reciba clientes</h3><p>Su empresa aparece en el directorio y los compradores le escriben directo.</p></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="seccion">
+      <div class="contenedor">
+        <h2>Empresas destacadas</h2>
+        <div class="rejilla" id="destacadas"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DIRECTORIO ===================== -->
+  <section data-vista="directorio" hidden>
+    <div class="seccion">
+      <div class="contenedor">
+        <div class="directorio-cabecera">
+          <h1>Directorio de empresas</h1>
+          <div class="buscador">
+            <label for="buscar" class="lugar">Buscar por nombre o producto</label>
+            <input id="buscar" type="search" placeholder="Ej.: queso fresco, Tulcán">
+          </div>
+          <div class="filtros">
+            <label for="filtro-canton" class="lugar">Cantón</label>
+            <select id="filtro-canton"><option value="">Todos</option></select>
+            <label for="filtro-tipo" class="lugar">Tipo</label>
+            <select id="filtro-tipo"><option value="">Todos</option></select>
+          </div>
+          <div class="filtros" id="filtro-productos" role="group" aria-label="Productos"></div>
+          <p class="contador" id="contador" aria-live="polite"></p>
+        </div>
+
+        <div class="rejilla" id="resultados"></div>
+
+        <h2>Mapa por cantón</h2>
+        <div class="mapa-caja">
+          <svg id="mapa" viewBox="0 0 420 270" role="img" aria-label="Mapa esquemático del Carchi con el número de empresas por cantón"></svg>
+          <p class="mapa-nota">Esquema sin escala. Toque un cantón para filtrar el directorio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FICHA ===================== -->
+  <section data-vista="ficha" hidden>
+    <div class="seccion">
+      <div class="contenedor" id="ficha"></div>
+    </div>
+  </section>
+
+  <!-- ===================== REGISTRO ===================== -->
+  <section data-vista="registro" hidden>
+    <div class="seccion">
+      <div class="contenedor">
+        <h1>Registrar mi empresa</h1>
+        <p>Toma unos 5 minutos. Los campos con * son obligatorios.</p>
+
+        <form class="registro" id="form-registro" novalidate>
+          <ol class="progreso" id="progreso">
+            <li>1. Empresa</li><li>2. Ubicación</li><li>3. Productos</li><li>4. Revisar</li>
+          </ol>
+
+          <fieldset data-paso="1">
+            <legend>Datos de la empresa</legend>
+            <div class="campo">
+              <label for="r-nombre">Nombre comercial *</label>
+              <input id="r-nombre" name="nombre" required minlength="3" placeholder=" " autocomplete="organization">
+              <span class="error">Escriba al menos 3 letras.</span>
+            </div>
+            <div class="campo">
+              <label for="r-ruc">RUC *</label>
+              <input id="r-ruc" name="ruc" required inputmode="numeric" pattern="[0-9]{10}001" maxlength="13" placeholder=" ">
+              <span class="ayuda">13 números. Termina en 001.</span>
+              <span class="error">El RUC debe tener 13 números y terminar en 001.</span>
+            </div>
+            <div class="campo">
+              <label for="r-tipo">Tipo de empresa *</label>
+              <select id="r-tipo" name="tipo" required><option value="">Elija una opción</option></select>
+              <span class="error">Elija el tipo de empresa.</span>
+            </div>
+          </fieldset>
+
+          <fieldset data-paso="2" hidden>
+            <legend>Ubicación y contacto</legend>
+            <div class="campo">
+              <label for="r-canton">Cantón *</label>
+              <select id="r-canton" name="canton" required><option value="">Elija un cantón</option></select>
+              <span class="error">Elija el cantón.</span>
+            </div>
+            <div class="campo">
+              <label for="r-parroquia">Parroquia o comunidad *</label>
+              <input id="r-parroquia" name="parroquia" required placeholder=" ">
+              <span class="error">Escriba la parroquia o comunidad.</span>
+            </div>
+            <div class="campo">
+              <label for="r-telefono">WhatsApp o celular *</label>
+              <input id="r-telefono" name="telefono" type="tel" required pattern="09[0-9]{8}" maxlength="10" placeholder=" " autocomplete="tel">
+              <span class="ayuda">10 números, empieza con 09.</span>
+              <span class="error">El celular debe tener 10 números y empezar con 09.</span>
+            </div>
+            <div class="campo">
+              <label for="r-correo">Correo electrónico *</label>
+              <input id="r-correo" name="correo" type="email" required placeholder=" " autocomplete="email">
+              <span class="error">Revise el correo, por ejemplo: nombre@correo.com</span>
+            </div>
+          </fieldset>
+
+          <fieldset data-paso="3" hidden>
+            <legend>Productos</legend>
+            <div class="campo">
+              <span id="r-productos-etiqueta"><strong>¿Qué produce? *</strong></span>
+              <div class="casillas" id="r-productos" role="group" aria-labelledby="r-productos-etiqueta"></div>
+              <span class="error" id="error-productos">Elija al menos un producto.</span>
+            </div>
+            <div class="campo">
+              <label for="r-litros">Leche procesada al día (litros)</label>
+              <input id="r-litros" name="litros" type="number" min="0" step="10" placeholder=" ">
+            </div>
+            <div class="campo">
+              <label for="r-arcsa">Registro sanitario ARCSA</label>
+              <input id="r-arcsa" name="arcsa" placeholder=" ">
+              <span class="ayuda">Si lo tiene, su ficha lleva el sello "Empresa verificada".</span>
+            </div>
+            <div class="campo">
+              <label for="r-descripcion">Cuéntenos de su empresa</label>
+              <textarea id="r-descripcion" name="descripcion" maxlength="400" placeholder=" "></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset data-paso="4" hidden>
+            <legend>Revise sus datos</legend>
+            <dl class="datos" id="r-resumen"></dl>
+          </fieldset>
+
+          <div class="navegacion-form">
+            <button type="button" class="boton secundario" id="r-atras">Atrás</button>
+            <button type="button" class="boton" id="r-siguiente">Siguiente</button>
+            <button type="submit" class="boton" id="r-enviar" hidden>Enviar registro</button>
+          </div>
+        </form>
+
+        <div class="registro" id="r-listo" hidden>
+          <span class="estado" id="r-estado">En revisión</span>
+          <h2 id="r-listo-titulo">¡Gracias! Recibimos su registro</h2>
+          <p id="r-listo-texto">El equipo de Carchi Lácteo revisará sus datos. Le avisaremos por correo cuando su ficha esté publicada.</p>
+          <p class="lugar">En el prototipo puede simular la aprobación del administrador:</p>
+          <div class="navegacion-form">
+            <button type="button" class="boton secundario" id="r-otro">Registrar otra</button>
+            <button type="button" class="boton" id="r-aprobar">Simular aprobación</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NOSOTROS ===================== -->
+  <section data-vista="nosotros" hidden>
+    <div class="seccion">
+      <div class="contenedor">
+        <h1>Nosotros</h1>
+        <p>Carchi Lácteo reúne en un solo lugar a las plantas procesadoras, queserías artesanales, centros de acopio y asociaciones de la provincia del Carchi.</p>
+        <p>Nuestro propósito es que la leche de altura del Carchi llegue a más mesas del Ecuador, con contacto directo entre quien produce y quien compra.</p>
+        <h2>Nuestros valores</h2>
+        <ol class="pasos">
+          <li><h3>Origen</h3><p>Orgullo por el páramo y su gente.</p></li>
+          <li><h3>Confianza</h3><p>Cada ficha se revisa antes de publicarse.</p></li>
+          <li><h3>Comunidad</h3><p>Grandes y pequeños, todos en el mismo directorio.</p></li>
+          <li><h3>Sencillez</h3><p>Fácil de usar desde cualquier celular.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACTO ===================== -->
+  <section data-vista="contacto" hidden>
+    <div class="seccion">
+      <div class="contenedor">
+        <h1>Contacto</h1>
+        <p>¿Necesita ayuda para registrarse? Escríbanos y le acompañamos paso a paso.</p>
+        <form class="registro" id="form-contacto" novalidate>
+          <div class="campo">
+            <label for="c-nombre">Nombre *</label>
+            <input id="c-nombre" required placeholder=" " autocomplete="name">
+            <span class="error">Escriba su nombre.</span>
+          </div>
+          <div class="campo">
+            <label for="c-correo">Correo *</label>
+            <input id="c-correo" type="email" required placeholder=" " autocomplete="email">
+            <span class="error">Revise el correo.</span>
+          </div>
+          <div class="campo">
+            <label for="c-mensaje">Mensaje *</label>
+            <textarea id="c-mensaje" required placeholder=" "></textarea>
+            <span class="error">Escriba su mensaje.</span>
+          </div>
+          <button class="boton" type="submit">Enviar mensaje</button>
+          <p class="estado" id="c-ok" hidden>Mensaje listo. En el sitio real se enviaría al equipo.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <span><strong>Carchi Lácteo</strong> · Del páramo a tu mesa</span>
+    <span>Provincia del Carchi, Ecuador</span>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
